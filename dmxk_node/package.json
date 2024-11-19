@@ -1,0 +1,15 @@
+{
+  "name": "daimaxiaokuserber",
+  "version": "1.0.0",
+  "description": "代码小库服务器",
+  "main": "index.js",
+  "repository": "https://github.com/18583468779/dmxk_web",
+  "author": "xiaoxie",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}
