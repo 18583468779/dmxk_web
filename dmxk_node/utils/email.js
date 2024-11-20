@@ -27,9 +27,23 @@ export async function sendMailToMailId(mailId, verifyCode) {
   return new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return resolve(error);
+        return reject(error);
       }
-      reject(info.messageId);
+      resolve(info.messageId);
     });
   });
+}
+
+/**
+ *  @description 生成随机验证码，默认4位
+ *  @param {几位验证码} num
+ */
+export function generateVerifyCode(num = 4) {
+  const chars =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let code = "";
+  for (let i = 0; i < num; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
 }
