@@ -5,7 +5,7 @@ import baseModel from "./baseModel.js";
 export const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+    required: false,
     default: null,
     unique: true,
   },
@@ -21,7 +21,7 @@ export const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: false,
+    required: true,
     unique: true,
   },
   ...baseModel,
