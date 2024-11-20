@@ -1,3 +1,3 @@
 const appPort = 3000;
-
-export { appPort };
+const DBNAME = "dmxk_test";
+export { appPort, DBNAME };
