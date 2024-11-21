@@ -7,20 +7,16 @@ import {
 
 // 用户登录
 const logins = async (req, res) => {
-  console.log(req.body);
-  let { email, password } = req.body;
-  try {
-    let user = await UserModel.findOne({ email });
-    if (!user)
-      return res
-        .status(404)
-        .json({ code: 1, msg: "该账号不存在，请注册账号后登录" });
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) return res.status(400).json({ code: 1, msg: "密码错误！" });
-    res.status(200).json({ code: 0, data: user, msg: "恭喜你！登录成功" });
-  } catch (error) {
-    res.status(500).json({ code: 1, msg: error });
-  }
+  const { email } = req.body;
+  const account = await UserModel.findOne({ email });
+  if (!account)
+    return res
+      .status(404)
+      .json({ code: 1, msg: "该账号不存在，请注册账号后登录" });
+  let user = await UserModel.findOne(req.body);
+  if (!user) return res.status(403).json({ code: 1, msg: "密码错误" });
+
+  res.status(200).json({ code: 0, data: user, msg: "恭喜你！登录成功" });
 };
 // 获取邮箱验证码
 const sendEmail = async (req, res) => {
