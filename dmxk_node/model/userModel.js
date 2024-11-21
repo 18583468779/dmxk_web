@@ -25,6 +25,11 @@ export const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  avatar: {
+    // 用户头像
+    type: String,
+    required: false,
+  },
   ...baseModel,
 });
 
