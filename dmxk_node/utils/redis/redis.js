@@ -1,5 +1,5 @@
 import Redis from "ioredis";
-import { endPoint, redisPoint, redisPwd } from "../../config/index.config";
+import { endPoint, redisPoint, redisPwd } from "../../config/index.config.js";
 const redis = new Redis(redisPoint, endPoint, { password: redisPwd });
 
 redis.on("error", (err) => {

@@ -17,7 +17,6 @@ main()
     console.log(err);
   });
 
-let model = {
-  UserModel: new mongoose.model("UserModel", userSchema), // 用户模型
-};
-export { model };
+const UserModel = new mongoose.model("UserModel", userSchema); // 用户模型
+
+export { UserModel };
