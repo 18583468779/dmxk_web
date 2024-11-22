@@ -1,12 +1,16 @@
 import { UserModel } from "../mongodb/index.js";
 import { generateVerifyCode, sendMailToMailId } from "../utils/email.js";
+import { signToken } from "../utils/jwt.js";
 import {
   getVerifyCodeToRedis,
   setVerifyCodeToRedis,
 } from "../utils/redis/codeRedis.js";
 // 用户登录
 const logins = async (req, res) => {
-  res.status(200).json({ code: 0, data: user, msg: "恭喜你！登录成功" });
+  let token = signToken(req.user);
+  res
+    .status(200)
+    .json({ code: 0, data: { ...req.user, token }, msg: "恭喜你！登录成功" });
 };
 // 获取邮箱验证码
 const sendEmail = async (req, res) => {

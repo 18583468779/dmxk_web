@@ -30,6 +30,8 @@ const loginsValidator = validate([
       const { email, password } = req.body;
       const user = await UserModel.findOne({ email, password });
       if (!user) throw new Error("密码错误");
+      req.user = user.toJSON(); // 登录成功时调用这个user
+
       return true;
     }),
 ]);
