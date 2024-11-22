@@ -4,18 +4,8 @@ import {
   getVerifyCodeToRedis,
   setVerifyCodeToRedis,
 } from "../utils/redis/codeRedis.js";
-
 // 用户登录
 const logins = async (req, res) => {
-  const { email } = req.body;
-  const account = await UserModel.findOne({ email });
-  if (!account)
-    return res
-      .status(404)
-      .json({ code: 1, msg: "该账号不存在，请注册账号后登录" });
-  let user = await UserModel.findOne(req.body);
-  if (!user) return res.status(403).json({ code: 1, msg: "密码错误" });
-
   res.status(200).json({ code: 0, data: user, msg: "恭喜你！登录成功" });
 };
 // 获取邮箱验证码
@@ -37,7 +27,6 @@ const sendEmail = async (req, res) => {
     });
   }
 };
-
 //用户注册
 const registers = async (req, res) => {
   let { email, password, confirmPassword, code } = req.body;
