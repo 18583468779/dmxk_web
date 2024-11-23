@@ -13,11 +13,11 @@ const verifyToken = async (req, res, next) => {
   token = token ? token.split(" ")[1] : null;
   if (token) {
     try {
-      let userInfo = await verify(token, privateKey); // 校验token
+      let userInfo = await jwt.verify(token, privateKey); // 校验token
       req.user = userInfo; // 给当前请求赋值当前登录的用户信息
       next();
     } catch (error) {
-      res.status(401).json({ error: "无效的token" });
+      res.status(401).json({ error });
     }
   } else {
     res.status(402).json({ error: "请传入token" });

@@ -4,7 +4,7 @@ const redisPoint = 6379;
 const redisPwd = 123456;
 const endPoint = "127.0.0.1";
 const privateKey = "daimaxiaokuaiaiai123456!"; // token密钥
-const expiresIn = 60 * 60; // token过期时间
+const expiresIn = 60 * 60 * 10; // token过期时间
 export {
   appPort,
   DBNAME,

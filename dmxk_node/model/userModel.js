@@ -1,5 +1,5 @@
 // user用户模型
-import mongoose, { set } from "mongoose";
+import mongoose from "mongoose";
 import baseModel from "./baseModel.js";
 import { cryptoMd5 } from "../utils/md5.js";
 
