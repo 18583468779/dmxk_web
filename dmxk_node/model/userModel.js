@@ -32,5 +32,10 @@ export const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  role: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Role", // 管理角色表
+    required: false,
+  },
   ...baseModel,
 });
